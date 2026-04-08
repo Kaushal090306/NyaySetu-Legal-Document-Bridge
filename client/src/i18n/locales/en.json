@@ -1,0 +1,437 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "upload": "Upload",
+    "download": "Download",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "language": "Language"
+  },
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "pricing": "Pricing",
+    "faqs": "FAQs",
+    "history": "History",
+    "settings": "Settings",
+    "getStarted": "Get Started"
+  },
+  "navbar": {
+    "invalidUsername": "Invalid username",
+    "usernameMinLength": "Username must be at least 3 characters",
+    "profileUpdateFailed": "Profile update failed",
+    "tryAgain": "Please try again",
+    "profileUpdated": "Profile updated",
+    "displayNameUpdated": "Your display name has been updated",
+    "clearHistoryConfirm": "Remove all analysis history? This cannot be undone.",
+    "historyCleared": "History cleared",
+    "allHistoryRemoved": "All analysis history was removed",
+    "couldNotClearHistory": "Could not clear history",
+    "editProfile": "Edit profile",
+    "enterUsername": "Enter username",
+    "saveProfile": "Save profile",
+    "upgradePlan": "Upgrade plan",
+    "pricingComingSoon": "Pricing options are coming soon.",
+    "freeTokens": "Free tokens",
+    "manageHistory": "Manage analysis history",
+    "removeAllHistory": "Remove all history",
+    "removing": "Removing...",
+    "logout": "Log out",
+    "login": "Login",
+    "signup": "Sign up"
+  },
+  "brand": {
+    "name": "nyayasetu.ai",
+    "tagline": "Legal Document Intelligence",
+    "description": "Making legal documents accessible through AI-powered analysis and plain-language explanations."
+  },
+  "hero": {
+    "title": "See Your Legal Documents Clearly",
+    "description": "Upload any legal document and get instant plain-language summaries, risk analysis, and actionable insights powered by advanced AI."
+  },
+  "upload": {
+    "title": "Upload Document",
+    "dragAndDrop": "Drag and drop your document here",
+    "orClickToSelect": "or click to select a file",
+    "supportedFormats": "Supported formats: PDF, DOCX, TXT",
+    "maxFileSize": "Maximum file size: 10MB",
+    "pasteText": "Or paste your document text here",
+    "textPlaceholder": "Paste your legal document text here...",
+    "documentType": "Document Type",
+    "autoDetect": "Auto-detect",
+    "employment": "Employment Contract",
+    "rental": "Rental Agreement",
+    "nda": "Non-Disclosure Agreement",
+    "terms": "Terms of Service",
+    "other": "Other",
+    "summaryLength": "Summary Length",
+    "brief": "Brief",
+    "standard": "Standard",
+    "detailed": "Detailed",
+    "analyze": "Analyze Document",
+    "analyzing": "Analyzing...",
+    "fileTooLarge": "File too large",
+    "fileTooLargeDesc": "Please select a file smaller than 10MB.",
+    "invalidFileType": "Invalid file type",
+    "invalidFileTypeDesc": "Please select a PDF, DOCX, or TXT file.",
+    "uploadError": "Upload failed",
+    "uploadErrorDesc": "Failed to upload document. Please try again.",
+    "analysisError": "Analysis failed",
+    "analysisErrorDesc": "Failed to analyze document. Please try again.",
+    "serviceUnavailable": "Service Temporarily Unavailable",
+    "serviceUnavailableDesc": "The AI analysis service is experiencing high demand. Please try again in a few moments.",
+    "connectionError": "Connection Error", 
+    "connectionErrorDesc": "Unable to connect to the analysis service. Please check your internet connection and try again.",
+    "timeoutError": "Request Timeout",
+    "timeoutErrorDesc": "The analysis is taking longer than expected. Please try again with a shorter document."
+  },
+  "loading": {
+    "title": "Analyzing Your Document",
+    "description": "Our AI is carefully reviewing your document to provide comprehensive insights...",
+    "steps": {
+      "parsing": "Parsing document structure...",
+      "analyzing": "Analyzing content and clauses...",
+      "evaluating": "Evaluating risks and compliance...",
+      "finalizing": "Generating insights and recommendations..."
+    },
+    "stepNames": {
+      "parsing": "Parse",
+      "analyzing": "Analyze", 
+      "evaluating": "Evaluate",
+      "finalizing": "Finalize"
+    }
+  },
+  "analysis": {
+    "title": "Analysis Results",
+    "newAnalysis": "New Analysis",
+    "results": "Analysis Results",
+    "subtitle": "Upload a document to get AI-powered legal analysis",
+    "overview": "Analysis Overview",
+    "documentLength": "Document Length",
+    "words": "words",
+    "keyClauses": "Key Clauses",
+    "identified": "identified",
+    "riskLevel": "Risk Level",
+    "processingTime": "Processing Time",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "summary": "Summary",
+    "keyTerms": "Key Terms",
+    "riskAssessment": "Risk Assessment",
+    "clauses": "Key Clauses",
+    "recommendations": "Recommendations",
+    "employer": "Employer",
+    "employee": "Employee",
+    "salary": "Salary",
+    "startDate": "Start Date",
+    "probation": "Probation Period"
+  },
+  "risk": {
+    "highRisk": "High Risk",
+    "mediumRisk": "Medium Risk",
+    "lowRisk": "Low Risk",
+    "riskItems": "Risk Items",
+    "noRisks": "No significant risks identified"
+  },
+  "chat": {
+    "title": "Ask Questions",
+    "placeholder": "Ask a question about your document...",
+    "send": "Send",
+    "thinking": "Thinking...",
+    "noDocument": "Please upload a document first to start asking questions.",
+    "error": "Failed to get answer. Please try again."
+  },
+  "welcome": {
+    "title": "Upload a Document to Get Started",
+    "description": "Choose a legal document from your device or paste the text directly. Our AI will analyze it and provide you with clear, actionable insights."
+  },
+  "analyzing": {
+    "title": "Analyzing Your Document",
+    "description": "Our AI is carefully reviewing your document to provide comprehensive insights..."
+  },
+  "history": {
+    "empty": "No analyses yet",
+    "deleteConfirmTitle": "Delete Analysis",
+    "deleteConfirmDescription": "Are you sure you want to delete this analysis? This action cannot be undone.",
+    "deleteWarning": "Warning: This will permanently remove this analysis and all associated chat history.",
+    "deleteButton": "Delete Analysis",
+    "deleteCancel": "Cancel",
+    "deleteSuccess": "Analysis deleted successfully",
+    "deleteFailed": "Failed to delete analysis",
+    "deleting": "Deleting..."
+  },
+  "footer": {
+    "product": "Product",
+    "features": "Features",
+    "pricing": "Pricing",
+    "api": "API Access",
+    "resources": "Resources",
+    "documentation": "Documentation",
+    "guides": "Legal Guides",
+    "support": "Support",
+    "company": "Company",
+    "about": "About",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "copyright": "© 2026 nyayasetu.ai."
+  },
+  "home": {
+    "hero": {
+      "badge": "AI-Powered Legal Assistant",
+      "title": "Welcome to",
+      "subtitle": "NyayaSetu.AI",
+      "description": "Transform complex legal documents into clear, actionable insights with our advanced AI technology",
+      "getStartedButton": "Get Started Free",
+      "noRegistration": "No registration required • Instant analysis"
+    },
+    "stats": {
+      "documentsAnalyzed": "Documents Analyzed",
+      "accuracyRate": "Accuracy Rate",
+      "averageAnalysis": "Average Analysis",
+      "available": "Available"
+    },
+    "features": {
+      "title": "Powerful Features",
+      "subtitle": "Everything you need to understand and analyze legal documents with confidence",
+      "instantSummaries": {
+        "title": "Instant Summaries",
+        "description": "Get plain-language summaries of complex legal documents in seconds. No more struggling with legal jargon."
+      },
+      "riskAnalysis": {
+        "title": "AI-Powered Risk Analysis",
+        "description": "Identify potential risks, unusual terms, and key clauses automatically using advanced AI algorithms."
+      },
+      "clauseBreakdown": {
+        "title": "Clause Breakdown",
+        "description": "See original and simplified versions of important contract clauses with detailed explanations."
+      },
+      "accessible": {
+        "title": "Accessible for Everyone",
+        "description": "Designed for both legal professionals and everyday users with intuitive, user-friendly interface."
+      }
+    },
+    "benefits": {
+      "title": "Why Choose NyayaSetu.AI?",
+      "subtitle": "Empower yourself with intelligent legal document analysis",
+      "saveTime": {
+        "title": "Save Time and Money",
+        "description": "Reduce legal review costs and get instant analysis of your documents."
+      },
+      "understandSigning": {
+        "title": "Understand Before Signing",
+        "description": "Know your rights and obligations clearly before making any commitments."
+      },
+      "spotRisks": {
+        "title": "Spot Hidden Risks",
+        "description": "Identify potential issues and negotiate better terms with confidence."
+      },
+      "actionableInsights": {
+        "title": "Actionable Insights",
+        "description": "Get clear, practical recommendations you can act on immediately."
+      },
+      "readyToStart": {
+        "title": "Ready to Get Started?",
+        "description": "Join thousands of users who trust NyayaSetu.AI for their legal document analysis needs.",
+        "button": "Start Analyzing Documents"
+      }
+    },
+    "security": {
+      "title": "Security & Privacy First",
+      "subtitle": "Your documents and privacy are protected with enterprise-grade security",
+      "dataSafe": {
+        "title": "Your Data is Safe",
+        "description": "We never store your documents. All analysis is performed securely and confidentially with end-to-end encryption."
+      },
+      "privacyFirst": {
+        "title": "Privacy First",
+        "description": "Your privacy is our top priority. No data is shared with third parties, and all processing happens locally."
+      }
+    },
+    "disclaimer": {
+      "title": "Important Disclaimer",
+      "important": "Important:",
+      "informational": "This tool is for informational purposes only.",
+      "notRely": "Do not rely solely on its analysis for legal decisions.",
+      "consultAdvocate": "Always consult a qualified advocate or legal professional for advice specific to your situation.",
+      "button": "I Understand & Continue"
+    },
+    "footer": {
+      "brand": {
+        "name": "nyayasetu.ai",
+        "description": "Making legal documents accessible through AI-powered analysis and plain-language explanations."
+      },
+      "features": {
+        "title": "Features",
+        "documentAnalysis": "Document Analysis",
+        "riskAssessment": "Risk Assessment",
+        "plainLanguage": "Plain Language Summary",
+        "clauseBreakdown": "Clause Breakdown"
+      },
+      "security": {
+        "title": "Security",
+        "noDataStorage": "No Data Storage",
+        "endToEnd": "End-to-End Encryption",
+        "privacyProtected": "Privacy Protected",
+        "secureProcessing": "Secure Processing"
+      },
+      "copyright": "© 2026 nyayasetu.ai.",
+      "madeWith": "Made with AI for everyone",
+      "securePrivate": "Secure & Private"
+    }
+  },
+  "landing": {
+    "hero": {
+      "badge": "Legal reading, reimagined",
+      "lines": [
+        "Turn legal jargon into clarity",
+        "Spot risks before they cost you",
+        "Contracts, explained in plain language",
+        "Decode contracts instantly",
+        "Stop guessing. Start understanding."
+      ],
+      "title": "Understand contracts",
+      "highlight": "before they understand you.",
+      "description": "Nyayasetu AI turns legal complexity into clear action points. Upload any agreement, detect hidden risk, and prepare better questions before you sign.",
+      "cta": "Start free analysis",
+      "subCta": "Use your free credits to start analyzing"
+    },
+    "trust": {
+      "title": "Why teams trust this",
+      "point1": "Privacy-first processing, built for sensitive legal language.",
+      "point2": "Structured highlights for obligations, penalties, and hidden clauses.",
+      "point3": "Useful for citizens, founders, and legal professionals alike."
+    },
+    "quickStats": {
+      "documentsChecked": "Documents checked",
+      "averageResponse": "Average response",
+      "riskCuesFlagged": "Risk cues flagged"
+    },
+    "workflow": {
+      "label": "Workflow",
+      "title": "A clear path from upload to action",
+      "cta": "Try it now",
+      "stepLabel": "Step {{number}}",
+      "step1": {
+        "title": "Drop your file",
+        "detail": "Upload PDF, DOCX, or TXT and choose your summary depth."
+      },
+      "step2": {
+        "title": "AI scans structure",
+        "detail": "Clauses, obligations, penalties, and exceptions are mapped in context."
+      },
+      "step3": {
+        "title": "Act with confidence",
+        "detail": "Read clear recommendations before signing or negotiating."
+      }
+    },
+    "features": {
+      "label": "Capabilities",
+      "title": "Designed for real legal decisions",
+      "card1": {
+        "title": "Clause intelligence",
+        "text": "Turns dense legal sections into plain-language summaries without losing key meaning."
+      },
+      "card2": {
+        "title": "Risk heat map",
+        "text": "Highlights high-risk wording and surfaces what you should challenge first."
+      },
+      "card3": {
+        "title": "Advice-ready outputs",
+        "text": "Share concise reports with your advocate and speed up legal consultations."
+      }
+    },
+    "pricing": {
+      "label": "Pricing",
+      "title": "Flexible Credit-Based Access",
+      "subtitle": "No weekly or monthly subscriptions. Use credits based on your needs.",
+      "plans": {
+        "starter": {
+          "name": "Starter",
+          "description": "For free users getting started with document analysis",
+          "price": "Free",
+          "period": "3 free credits",
+          "features": [
+            "Get 3 free credits on signup",
+            "1 credit = 1 document analysis",
+            "Basic analysis and risk detection",
+            "No credit card required"
+          ],
+          "cta": "Start with Free Credits"
+        },
+        "professional": {
+          "name": "Professional",
+          "description": "50 credits for professionals who need higher usage",
+          "price": "Rs 999",
+          "period": "for 50 credits",
+          "features": [
+            "50 credits included",
+            "Advanced AI analysis",
+            "Priority support",
+            "Extended analysis history",
+            "Custom risk thresholds",
+            "Batch processing"
+          ],
+          "cta": "Choose Professional"
+        },
+        "enterprise": {
+          "name": "Enterprise",
+          "description": "For organizations needing custom credits and controls",
+          "price": "Custom",
+          "period": "tailored credits",
+          "features": [
+            "Everything in Professional",
+            "Customized credit allocation",
+            "Dedicated account manager",
+            "API access",
+            "Advanced security & compliance",
+            "Custom integrations"
+          ],
+          "cta": "Contact Sales"
+        }
+      }
+    },
+    "faqs": {
+      "label": "FAQs",
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "question": "What documents can I upload?",
+          "answer": "You can upload PDF, DOCX, or TXT files. The system is optimized for legal contracts, agreements, and other structured legal documents."
+        },
+        {
+          "question": "Is my data private and secure?",
+          "answer": "Yes. We use privacy-first processing and your documents are handled securely. Data is not stored permanently and processing happens in a secure environment."
+        },
+        {
+          "question": "Can Nyayasetu AI replace my lawyer?",
+          "answer": "No. Nyayasetu AI provides informational analysis to help you understand contracts better, but it does not replace professional legal advice. Always consult a qualified advocate for important legal decisions."
+        },
+        {
+          "question": "How long does the analysis take?",
+          "answer": "Most documents are analyzed within seconds. Complex contracts may take up to a minute. The average response time is around 35 seconds."
+        },
+        {
+          "question": "Do I need to create an account?",
+          "answer": "No account is needed for your first scan. You can try the analysis immediately. For continued use and to save your history, you may want to sign up."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Read legal language like a professional.",
+      "subpoint": "Data stays private and processing remains secure."
+    }
+  }
+}

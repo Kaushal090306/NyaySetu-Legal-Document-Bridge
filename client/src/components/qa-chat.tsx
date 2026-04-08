@@ -1,0 +1,229 @@
+import { useState, useEffect, useRef } from "react";
+import { Bot, MessageCircle, Send, UserRound } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
+import { API_ENDPOINTS } from "@/lib/api";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
+
+interface ChatMessage {
+  id: string;
+  question: string;
+  answer: string;
+  createdAt: string;
+}
+
+interface QAChatProps {
+  analysisId: string;
+  documentContent: string;
+}
+
+export default function QAChat({ analysisId, documentContent }: QAChatProps) {
+  const [question, setQuestion] = useState("");
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const messagesContainerRef = useRef<HTMLDivElement | null>(null);
+  const { toast } = useToast();
+  const { t } = useTranslation();
+  const queryClient = useQueryClient();
+
+  // Log the analysisId for debugging
+  useEffect(() => {
+    console.log("[QAChat] Component mounted with analysisId:", analysisId);
+  }, [analysisId]);
+
+  // Fetch existing chat messages
+  const { data: messages = [], refetch, isLoading, error } = useQuery<ChatMessage[]>({
+    queryKey: ['analysis', analysisId, 'messages'],
+    queryFn: async () => {
+      if (!analysisId) {
+        console.warn("[QAChat] No analysisId provided");
+        throw new Error("No analysis ID");
+      }
+      const endpoint = API_ENDPOINTS.analysis.getMessages(analysisId);
+      console.log(`[QAChat] Fetching messages from: ${endpoint}`);
+      try {
+        const response = await apiRequest('GET', endpoint);
+        const data = await response.json();
+        console.log(`[QAChat] Got ${data.length} messages`);
+        return data;
+      } catch (err) {
+        console.error(`[QAChat] Failed to fetch messages:`, err);
+        throw err;
+      }
+    },
+    enabled: !!analysisId,
+  });
+
+  // Mutation for asking questions
+  const askQuestionMutation = useMutation({
+    mutationFn: async (questionText: string) => {
+      const response = await apiRequest('POST', API_ENDPOINTS.analysis.askQuestion(analysisId), {
+        question: questionText,
+      });
+      return response.json();
+    },
+    onSuccess: async () => {
+      setQuestion("");
+      // Wait a moment then refetch messages
+      setTimeout(() => {
+        refetch();
+      }, 500);
+      toast({
+        title: t("common.success"),
+        description: t("chat.title"),
+      });
+    },
+    onError: (error: Error) => {
+      toast({
+        title: t("chat.error"),
+        description: error.message || t("chat.error"),
+        variant: "destructive",
+      });
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!question.trim()) return;
+    
+    askQuestionMutation.mutate(question.trim());
+  };
+
+  const formatTime = (isoDate: string) => {
+    const date = new Date(isoDate);
+    if (Number.isNaN(date.getTime())) return "";
+    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  };
+
+  // Auto-scroll to bottom when messages change
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [messages, askQuestionMutation.isPending]);
+
+  void documentContent;
+
+  return (
+    <section
+      className="analysis-card flex h-[460px] max-h-[68vh] flex-col overflow-hidden rounded-2xl border border-[#2d575e]/15 bg-[#f7fbf9] px-4 py-4 sm:h-[520px] sm:max-h-[70vh] sm:px-5"
+      data-testid="card-qa-chat"
+    >
+      <header className="flex-shrink-0 border-b border-[#2d575e]/10 pb-3">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h3 className="font-display text-base font-semibold text-[#1d3b40] sm:text-lg" data-testid="text-qa-title">
+              {t("chat.title")}
+            </h3>
+            <p className="mt-1 text-sm text-[#6b8a90]">
+              {t("chat.placeholder")}
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <div 
+        ref={messagesContainerRef}
+        className="flex-1 overflow-y-auto py-4" 
+        data-testid="area-chat-messages"
+      >
+        <div className="space-y-5">
+          {messages && messages.length > 0 ? (
+            messages.map((message) => (
+              <article key={message.id} className="space-y-3 animate-in fade-in slide-in-from-bottom-2">
+                <div className="flex justify-end">
+                  <div className="max-w-[90%] sm:max-w-[75%]" data-testid={`message-question-${message.id}`}>
+                    <div className="mb-1 flex items-center justify-end gap-2 text-xs font-medium text-[#547980]">
+                      <span>You</span>
+                      <UserRound className="h-3.5 w-3.5" />
+                    </div>
+                    <div className="rounded-2xl rounded-tr-sm bg-[#1f555e] px-4 py-3 text-sm leading-relaxed text-[#eefffa]">
+                      {message.question}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex justify-start">
+                  <div className="max-w-[95%] sm:max-w-[88%]" data-testid={`message-answer-${message.id}`}>
+                    <div className="mb-1 flex items-center gap-2 text-xs font-medium text-[#547980]">
+                      <Bot className="h-3.5 w-3.5" />
+                      <span>Nyayasetu AI</span>
+                      <span className="text-[#86a6ab]">{formatTime(message.createdAt)}</span>
+                    </div>
+                    <div className="rounded-2xl rounded-tl-sm border border-[#29545b]/14 bg-white px-4 py-3 text-sm leading-relaxed text-[#27484e]">
+                      <p className="whitespace-pre-wrap break-words">{message.answer}</p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))
+          ) : (
+            <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-[#2f5960]/25 bg-white px-6 py-10 text-center">
+              <MessageCircle className="mb-3 h-8 w-8 text-[#5f848a]" />
+              <p className="text-sm font-medium text-[#2a5259]" data-testid="text-no-messages">
+                Ask your first question about this document
+              </p>
+              <p className="mt-1 text-xs text-[#668b91]">
+                Type below to get a quick answer from the analysis
+              </p>
+            </div>
+          )}
+
+          {askQuestionMutation.isPending && (
+            <article className="space-y-3 animate-in fade-in slide-in-from-bottom-2">
+              <div className="flex justify-end">
+                <div className="max-w-[90%] sm:max-w-[75%]" data-testid="message-pending-question">
+                  <div className="rounded-2xl rounded-tr-sm bg-[#1f555e] px-4 py-3 text-sm leading-relaxed text-[#eefffa]">
+                    {question}
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-start">
+                <div className="max-w-[95%] sm:max-w-[88%]" data-testid="message-pending-answer">
+                  <div className="rounded-2xl rounded-tl-sm border border-[#29545b]/14 bg-white px-4 py-3">
+                    <div className="flex items-center space-x-3">
+                      <div className="loading-dots">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <p className="text-sm text-[#5c8087]">{t("chat.thinking")}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          )}
+
+          <div ref={messagesEndRef} />
+        </div>
+      </div>
+
+      <form onSubmit={handleSubmit} className="flex-shrink-0 border-t border-[#2d575e]/10 pt-4" data-testid="form-chat-input">
+        <div className="flex items-center gap-3">
+          <Input
+            placeholder={t("chat.placeholder")}
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            disabled={askQuestionMutation.isPending}
+            className="h-11 rounded-xl border-[#2f5960]/25 bg-[#f8fcfa] px-4 py-3 text-sm text-[#23484e] placeholder:text-[#75989e] focus-visible:ring-[#2a5b64]"
+            data-testid="input-question"
+          />
+          <Button
+            type="submit"
+            size="icon"
+            className="h-11 w-11 flex-shrink-0 rounded-xl bg-[#1f565f] px-3 text-[#ecfffa] hover:bg-[#173f46]"
+            disabled={askQuestionMutation.isPending || !question.trim()}
+            data-testid="button-send-question"
+          >
+            <Send className="h-4 w-4" />
+          </Button>
+        </div>
+        <p className="mt-2 text-xs text-[#76989e]">{t("chat.send")}</p>
+      </form>
+    </section>
+  );
+}
