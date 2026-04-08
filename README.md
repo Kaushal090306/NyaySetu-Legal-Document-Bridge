@@ -1,1 +1,0 @@
-# NyaySetu-Legal-Document-Bridge
